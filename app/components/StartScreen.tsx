@@ -35,7 +35,7 @@ export function StartScreen({ onStart }: StartScreenProps) {
           Geometry
           <br />
           <span className="text-indigo-600">Master Quest</span>
-          <span className="inline-block text-purple-500 ml-2 text-xl md:text-2xl">With Tiisetso Motsumitsumitsumi</span>
+          <span className="inline-block text-purple-500 ml-2 text-xl md:text-2xl">With Tiisetso Motsumi</span>
         </h1>
         
         {/* Animated Math Shapes */}
