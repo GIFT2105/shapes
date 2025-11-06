@@ -1,65 +1,177 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { StartScreen } from './components/StartScreen';
+import { GameScreen } from './components/GameScreen';
+import { EndScreen } from './components/EndScreen';
+import { GameState, POINTS_PER_QUESTION } from './types/game';
+import { getRandomQuestions } from './data/questions';
+
+export default function ShapeShifterGame() {
+  const [gameState, setGameState] = useState<GameState>({
+    currentQuestionIndex: 0,
+    score: 0,
+    totalQuestions: 15, // Increased for more gameplay
+    isGameActive: false,
+    gameScreen: 'start'
+  });
+
+  const [questions, setQuestions] = useState(() => getRandomQuestions(15));
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [lastAnswerCorrect, setLastAnswerCorrect] = useState<boolean | null>(null);
+
+  const startGame = () => {
+    setQuestions(getRandomQuestions(15));
+    setGameState({
+      currentQuestionIndex: 0,
+      score: 0,
+      totalQuestions: 15,
+      isGameActive: true,
+      gameScreen: 'game'
+    });
+    setShowFeedback(false);
+    setLastAnswerCorrect(null);
+  };
+
+  const handleAnswer = (isCorrect: boolean) => {
+    setLastAnswerCorrect(isCorrect);
+    setShowFeedback(true);
+    
+    if (isCorrect) {
+      setGameState(prev => ({
+        ...prev,
+        score: prev.score + POINTS_PER_QUESTION
+      }));
+    }
+
+    // Move to next question or end game after delay
+    setTimeout(() => {
+      setShowFeedback(false);
+      setGameState(prev => {
+        const nextIndex = prev.currentQuestionIndex + 1;
+        if (nextIndex >= prev.totalQuestions) {
+          return {
+            ...prev,
+            currentQuestionIndex: nextIndex,
+            isGameActive: false,
+            gameScreen: 'end'
+          };
+        } else {
+          return {
+            ...prev,
+            currentQuestionIndex: nextIndex
+          };
+        }
+      });
+    }, 2000);
+  };
+
+  const restartGame = () => {
+    startGame();
+  };
+
+  const currentQuestion = questions[gameState.currentQuestionIndex];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      {/* Animated Background Mathematical Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(25)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-blue-200/30 font-mono text-sm select-none"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              opacity: [0.2, 0.4, 0.2],
+              y: [0, -15, 0],
+              rotate: [0, 180],
+            }}
+            transition={{
+              duration: Math.random() * 4 + 4,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {['π', '∆', '∠', '⊥', '||', '≅', '∞', '√', '²', '³', '°'][Math.floor(Math.random() * 11)]}
+          </motion.div>
+        ))}
+        
+        {/* Geometric grid pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#3b82f6" strokeWidth="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
         </div>
-      </main>
+      </div>
+
+      {/* Main Game Container */}
+      <motion.div
+        className="relative z-10 flex items-center justify-center min-h-screen p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="w-full max-w-4xl">
+          <AnimatePresence mode="wait">
+            {gameState.gameScreen === 'start' && (
+              <motion.div
+                key="start"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5 }}
+              >
+                <StartScreen onStart={startGame} />
+              </motion.div>
+            )}
+
+            {gameState.gameScreen === 'game' && currentQuestion && (
+              <motion.div
+                key="game"
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
+              >
+                <GameScreen
+                  question={currentQuestion}
+                  questionNumber={gameState.currentQuestionIndex + 1}
+                  totalQuestions={gameState.totalQuestions}
+                  score={gameState.score}
+                  onAnswer={handleAnswer}
+                  showFeedback={showFeedback}
+                  isCorrect={lastAnswerCorrect}
+                />
+              </motion.div>
+            )}
+
+            {gameState.gameScreen === 'end' && (
+              <motion.div
+                key="end"
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 50 }}
+                transition={{ duration: 0.5 }}
+              >
+                <EndScreen
+                  score={gameState.score}
+                  totalQuestions={gameState.totalQuestions}
+                  onRestart={restartGame}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
     </div>
   );
 }
