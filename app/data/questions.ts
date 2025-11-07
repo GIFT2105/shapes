@@ -1,11 +1,11 @@
 import { Question } from '../types/game';
 
 export const questions: Question[] = [
-  // 2D Shapes - Easy
+  // 2D Shapes - Easy (Grade 5 CAPS: Properties of 2D shapes)
   {
     id: 1,
     type: 'multiple-choice',
-    question: 'In mathematical terms, how many sides does a triangle have?',
+    question: 'How many sides does a triangle have?',
     iconComponent: 'BsTriangle',
     category: 'shapes-2d',
     difficulty: 'easy',
@@ -19,21 +19,21 @@ export const questions: Question[] = [
   {
     id: 2,
     type: 'multiple-choice',
-    question: 'Which quadrilateral has 4 congruent sides and 4 right angles?',
+    question: 'Which shape has 4 equal sides and 4 right angles?',
     iconComponent: 'BsSquare',
     category: 'shapes-2d',
     difficulty: 'easy',
     options: [
       { text: 'Rectangle', correct: false },
-      { text: 'Rhombus', correct: false },
+      { text: 'Triangle', correct: false },
       { text: 'Square', correct: true },
-      { text: 'Parallelogram', correct: false }
+      { text: 'Circle', correct: false }
     ]
   },
   {
     id: 3,
     type: 'true-false',
-    question: 'A circle is a closed curve with no vertices or angles.',
+    question: 'A circle has no corners.',
     iconComponent: 'BsCircle',
     category: 'shapes-2d',
     difficulty: 'easy',
@@ -51,64 +51,64 @@ export const questions: Question[] = [
   {
     id: 5,
     type: 'multiple-choice',
-    question: 'How many sides does an octagon have?',
+    question: 'How many sides does a hexagon have?',
     iconComponent: 'MdHexagon',
     category: 'shapes-2d',
     difficulty: 'medium',
     options: [
-      { text: '6', correct: false },
+      { text: '5', correct: false },
+      { text: '6', correct: true },
       { text: '7', correct: false },
-      { text: '8', correct: true },
-      { text: '9', correct: false }
+      { text: '8', correct: false }
     ]
   },
   {
     id: 6,
     type: 'true-false',
-    question: 'A rectangle is also a parallelogram.',
+    question: 'All squares are rectangles.',
     iconComponent: 'BsSquare',
     category: 'shapes-2d',
     difficulty: 'medium',
     answer: true
   },
   
-  // 3D Shapes - Easy to Medium
+  // 3D Objects - Easy to Medium (Grade 5 CAPS: 3D objects - faces, vertices, edges)
   {
     id: 7,
     type: 'multiple-choice',
-    question: 'What 3D shape has 6 identical square faces?',
+    question: 'How many faces does a cube have?',
     iconComponent: 'TbCube',
     category: 'shapes-3d',
     difficulty: 'easy',
     options: [
-      { text: 'Triangular Pyramid', correct: false },
-      { text: 'Cube', correct: true },
-      { text: 'Sphere', correct: false },
-      { text: 'Cylinder', correct: false }
+      { text: '4 faces', correct: false },
+      { text: '6 faces', correct: true },
+      { text: '8 faces', correct: false },
+      { text: '12 faces', correct: false }
     ]
   },
   {
     id: 8,
     type: 'multiple-choice',
-    question: 'How many faces does a triangular pyramid have?',
-    iconComponent: 'GiPyramids',
+    question: 'How many edges does a cube have?',
+    iconComponent: 'TbCube',
     category: 'shapes-3d',
     difficulty: 'medium',
     options: [
-      { text: '3', correct: false },
-      { text: '4', correct: true },
-      { text: '5', correct: false },
-      { text: '6', correct: false }
+      { text: '6', correct: false },
+      { text: '8', correct: false },
+      { text: '12', correct: true },
+      { text: '16', correct: false }
     ]
   },
   {
     id: 9,
     type: 'true-false',
-    question: 'A sphere has no edges or vertices.',
+    question: 'A sphere has flat faces.',
     iconComponent: 'GiSphere',
     category: 'shapes-3d',
     difficulty: 'easy',
-    answer: true
+    answer: false
   },
   {
     id: 10,
@@ -122,40 +122,40 @@ export const questions: Question[] = [
   {
     id: 11,
     type: 'multiple-choice',
-    question: 'A cylinder has how many circular faces?',
+    question: 'Which 3D object has 2 circular faces and 1 curved surface?',
     iconComponent: 'GiCylinder',
     category: 'shapes-3d',
     difficulty: 'medium',
     options: [
-      { text: '0', correct: false },
-      { text: '1', correct: false },
-      { text: '2', correct: true },
-      { text: '3', correct: false }
+      { text: 'Cone', correct: false },
+      { text: 'Sphere', correct: false },
+      { text: 'Cylinder', correct: true },
+      { text: 'Cube', correct: false }
     ]
   },
   {
     id: 12,
     type: 'multiple-choice',
-    question: 'What 3D shape does a net made of 6 squares fold into?',
-    iconComponent: 'TbCube',
+    question: 'A rectangular prism has how many faces?',
+    iconComponent: 'TbCuboid',
     category: 'shapes-3d',
     difficulty: 'medium',
     options: [
-      { text: 'Rectangular Prism', correct: false },
-      { text: 'Cube', correct: true },
-      { text: 'Square-based Pyramid', correct: false },
-      { text: 'Triangular Prism', correct: false }
+      { text: '4', correct: false },
+      { text: '6', correct: true },
+      { text: '8', correct: false },
+      { text: '10', correct: false }
     ]
   },
 
-  // Geometry Concepts - Medium to Hard
+  // Properties of 2D Shapes - Medium (Grade 5 CAPS)
   {
     id: 13,
     type: 'true-false',
-    question: 'A regular pentagon has 5 equal sides and 5 equal angles.',
-    iconComponent: 'MdPentagon',
+    question: 'A rectangle has 4 right angles.',
+    iconComponent: 'BsSquare',
     category: 'geometry',
-    difficulty: 'medium',
+    difficulty: 'easy',
     answer: true
   },
   {
@@ -170,15 +170,15 @@ export const questions: Question[] = [
   {
     id: 15,
     type: 'multiple-choice',
-    question: 'What is the sum of angles in a triangle?',
-    iconComponent: 'FaPlay',
-    category: 'geometry',
-    difficulty: 'hard',
+    question: 'How many corners (vertices) does a pentagon have?',
+    iconComponent: 'MdPentagon',
+    category: 'shapes-2d',
+    difficulty: 'medium',
     options: [
-      { text: '90 degrees', correct: false },
-      { text: '180 degrees', correct: true },
-      { text: '270 degrees', correct: false },
-      { text: '360 degrees', correct: false }
+      { text: '4', correct: false },
+      { text: '5', correct: true },
+      { text: '6', correct: false },
+      { text: '7', correct: false }
     ]
   },
   {
@@ -191,11 +191,11 @@ export const questions: Question[] = [
     answer: '4'
   },
 
-  // Symmetry - Medium to Hard
+  // Symmetry - Medium (Grade 5 CAPS: Lines of symmetry)
   {
     id: 17,
     type: 'true-false',
-    question: 'A rectangle has 2 lines of symmetry.',
+    question: 'A square has 4 lines of symmetry.',
     iconComponent: 'BsSquare',
     category: 'symmetry',
     difficulty: 'medium',
@@ -204,15 +204,15 @@ export const questions: Question[] = [
   {
     id: 18,
     type: 'multiple-choice',
-    question: 'How many lines of symmetry does a circle have?',
-    iconComponent: 'FaCircle',
+    question: 'How many lines of symmetry does a rectangle have?',
+    iconComponent: 'BsSquare',
     category: 'symmetry',
-    difficulty: 'hard',
+    difficulty: 'medium',
     options: [
-      { text: '0', correct: false },
-      { text: '2', correct: false },
-      { text: '4', correct: false },
-      { text: 'Infinite', correct: true }
+      { text: '1', correct: false },
+      { text: '2', correct: true },
+      { text: '3', correct: false },
+      { text: '4', correct: false }
     ]
   },
   {
@@ -221,55 +221,55 @@ export const questions: Question[] = [
     question: 'How many lines of symmetry does an equilateral triangle have?',
     iconComponent: 'FaPlay',
     category: 'symmetry',
-    difficulty: 'hard',
+    difficulty: 'medium',
     options: [
       { text: '1', correct: false },
       { text: '2', correct: false },
       { text: '3', correct: true },
-      { text: '6', correct: false }
+      { text: '4', correct: false }
     ]
   },
   {
     id: 20,
     type: 'true-false',
-    question: 'A square has more lines of symmetry than a rectangle.',
-    iconComponent: 'FaStop',
+    question: 'A circle has many lines of symmetry.',
+    iconComponent: 'FaCircle',
     category: 'symmetry',
-    difficulty: 'hard',
+    difficulty: 'easy',
     answer: true
   },
 
-  // More Advanced 2D Shapes
+  // More 2D Shape Properties
   {
     id: 21,
     type: 'fill-in-blank',
-    question: 'A shape with 6 sides is called a...',
+    question: 'A shape with 8 sides is called an...',
     iconComponent: 'MdHexagon',
     category: 'shapes-2d',
     difficulty: 'medium',
-    answer: 'hexagon'
+    answer: 'octagon'
   },
   {
     id: 22,
     type: 'multiple-choice',
-    question: 'What is a rhombus?',
+    question: 'Which shape has 4 equal sides but no right angles?',
     iconComponent: 'GiDiamondHard',
     category: 'shapes-2d',
-    difficulty: 'hard',
+    difficulty: 'medium',
     options: [
-      { text: 'A shape with 4 equal sides', correct: true },
-      { text: 'A shape with 4 right angles', correct: false },
-      { text: 'A shape with 6 sides', correct: false },
-      { text: 'A 3D shape', correct: false }
+      { text: 'Square', correct: false },
+      { text: 'Rectangle', correct: false },
+      { text: 'Rhombus', correct: true },
+      { text: 'Triangle', correct: false }
     ]
   },
   {
     id: 23,
     type: 'true-false',
-    question: 'A trapezoid has exactly one pair of parallel sides.',
-    iconComponent: 'BsSquare',
+    question: 'A triangle can have 3 equal sides.',
+    iconComponent: 'BsTriangle',
     category: 'shapes-2d',
-    difficulty: 'hard',
+    difficulty: 'easy',
     answer: true
   },
   {
@@ -281,80 +281,80 @@ export const questions: Question[] = [
     difficulty: 'medium',
     options: [
       { text: 'Triangle', correct: false },
-      { text: 'Pentagon', correct: false },
+      { text: 'Square', correct: false },
       { text: 'Circle', correct: true },
       { text: 'Hexagon', correct: false }
     ]
   },
 
-  // More 3D Shapes
+  // More 3D Objects (Grade 5 CAPS)
   {
     id: 25,
     type: 'multiple-choice',
-    question: 'A triangular prism has how many rectangular faces?',
+    question: 'How many faces does a triangular prism have?',
     iconComponent: 'GiTriangularPrism',
     category: 'shapes-3d',
-    difficulty: 'hard',
+    difficulty: 'medium',
     options: [
-      { text: '2', correct: false },
-      { text: '3', correct: true },
+      { text: '3', correct: false },
       { text: '4', correct: false },
-      { text: '5', correct: false }
+      { text: '5', correct: true },
+      { text: '6', correct: false }
     ]
   },
   {
     id: 26,
     type: 'fill-in-blank',
-    question: 'A cone has how many faces?',
+    question: 'A cone has how many vertices?',
     iconComponent: 'GiCone',
     category: 'shapes-3d',
-    difficulty: 'hard',
-    answer: '2'
+    difficulty: 'medium',
+    answer: '1'
   },
   {
     id: 27,
     type: 'true-false',
-    question: 'A rectangular prism is the same as a cuboid.',
-    iconComponent: 'TbCuboid',
+    question: 'A pyramid has a square base and triangular faces.',
+    iconComponent: 'GiPyramids',
     category: 'shapes-3d',
-    difficulty: 'medium',
+    difficulty: 'easy',
     answer: true
   },
   {
     id: 28,
     type: 'multiple-choice',
-    question: 'How many edges does a square pyramid have?',
+    question: 'How many vertices does a square pyramid have?',
     iconComponent: 'BsTriangle',
     category: 'shapes-3d',
-    difficulty: 'hard',
+    difficulty: 'medium',
     options: [
+      { text: '4', correct: false },
+      { text: '5', correct: true },
       { text: '6', correct: false },
-      { text: '7', correct: false },
-      { text: '8', correct: true },
-      { text: '9', correct: false }
+      { text: '8', correct: false }
     ]
   },
   {
     id: 29,
     type: 'fill-in-blank',
-    question: 'In a coordinate plane, how many dimensions do we work with?',
-    iconComponent: 'FaCalculator',
-    category: 'geometry',
+    question: 'How many straight sides does a circle have?',
+    iconComponent: 'BsCircle',
+    category: 'shapes-2d',
     difficulty: 'easy',
-    answer: '2'
+    answer: '0'
   },
   {
     id: 30,
     type: 'multiple-choice',
-    question: 'What is the mathematical name for the distance around a circle?',
-    iconComponent: 'BsCircle',
-    category: 'geometry',
+    question: 'A cylinder has how many curved surfaces?',
+    iconComponent: 'GiCylinder',
+    category: 'shapes-3d',
     difficulty: 'medium',
     options: [
-      { text: 'Diameter', correct: false },
-      { text: 'Radius', correct: false },
-      { text: 'Circumference', correct: true },
-      { text: 'Area', correct: false }
+      { text: '0', correct: false },
+      { text: '1', correct: true },
+      { text: '2', correct: false },
+      { text: '3', correct: false }
     ]
   }
 ];
